@@ -19,7 +19,7 @@
         <spring.version>6.1.6</spring.version>
         <hibernate.version>6.4.10.Final</hibernate.version>
         <jakarta.faces.version>4.0.2</jakarta.faces.version>
-        <primefaces.version>14.0.12</primefaces.version>
+        <primefaces.version>13.0.11</primefaces.version>
     </properties>
 
     <dependencies>
@@ -44,25 +44,11 @@
             <version>${jakarta.faces.version}</version>
         </dependency>
 
-        <!-- PrimeFaces with javax exclusions -->
+        <!-- PrimeFaces 13.0.11 - Jakarta compatible -->
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>${primefaces.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.servlet</groupId>
-                    <artifactId>javax.servlet-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>javax.faces</groupId>
-                    <artifactId>javax.faces-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.jboss.spec.javax.servlet</groupId>
-                    <artifactId>jboss-servlet-api_3.1_spec</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- CDI / JSR-330 -->
