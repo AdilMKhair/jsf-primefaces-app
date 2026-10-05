@@ -19,7 +19,7 @@
     </properties>
 
     <dependencies>
-        <!-- Jakarta Servlet API 5.0 (for Tomcat 10) -->
+        <!-- Jakarta Servlet API 5.0 (for Tomcat 10+) -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
@@ -41,25 +41,25 @@
             <version>13.0.0</version>
         </dependency>
 
-        <!-- Jakarta CDI -->
+        <!-- Jakarta CDI 4.0 (includes build compatible extension API) -->
         <dependency>
             <groupId>jakarta.enterprise</groupId>
             <artifactId>jakarta.enterprise.cdi-api</artifactId>
-            <version>3.0.0</version>
+            <version>4.0.1</version>
         </dependency>
 
         <!-- Jakarta Annotation -->
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
-            <version>2.0.0</version>
+            <version>2.1.1</version>
         </dependency>
 
-        <!-- Weld CDI Implementation -->
+        <!-- Weld CDI Implementation 5.1 (compatible with CDI 4.0) -->
         <dependency>
             <groupId>org.jboss.weld.servlet</groupId>
             <artifactId>weld-servlet-core</artifactId>
-            <version>5.0.0.Final</version>
+            <version>5.1.2.Final</version>
         </dependency>
     </dependencies>
 
