@@ -19,29 +19,45 @@
     </properties>
 
     <dependencies>
-        <!-- Jakarta Servlet API 5.0 (for Tomcat 10+) -->
+        <!-- Jakarta Servlet API 6.0 (for Tomcat 11) -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
-            <version>5.0.0</version>
+            <version>6.0.0</version>
             <scope>provided</scope>
         </dependency>
 
-        <!-- Jakarta Faces (JSF 3.0) -->
+        <!-- Jakarta Faces (JSF 4.0) -->
+        <dependency>
+            <groupId>jakarta.faces</groupId>
+            <artifactId>jakarta.faces-api</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>jakarta.faces</artifactId>
-            <version>3.0.2</version>
+            <version>4.0.2</version>
         </dependency>
 
-        <!-- PrimeFaces 13.0.0 (Jakarta-compatible) -->
+        <!-- PrimeFaces 14.0.0 with explicit javax exclusion -->
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>13.0.0</version>
+            <version>14.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>javax.servlet-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.faces</groupId>
+                    <artifactId>javax.faces-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
-        <!-- Jakarta CDI 4.0 (includes build compatible extension API) -->
+        <!-- Jakarta CDI -->
         <dependency>
             <groupId>jakarta.enterprise</groupId>
             <artifactId>jakarta.enterprise.cdi-api</artifactId>
@@ -53,13 +69,6 @@
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
             <version>2.1.1</version>
-        </dependency>
-
-        <!-- Weld CDI Implementation 5.1 (compatible with CDI 4.0) -->
-        <dependency>
-            <groupId>org.jboss.weld.servlet</groupId>
-            <artifactId>weld-servlet-core</artifactId>
-            <version>5.1.2.Final</version>
         </dependency>
     </dependencies>
 
