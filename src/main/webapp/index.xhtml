@@ -5,40 +5,37 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
-    <title>JSF PrimeFaces Demo</title>
+    <title>JSF PrimeFaces + Spring 6</title>
     <h:outputStylesheet name="css/style.css" />
 </h:head>
 <h:body>
     <h:form>
         <div class="container">
-            <h1>Welcome to JSF PrimeFaces!</h1>
-            
-            <p:panel header="User Form" style="width:400px; margin: 20px auto;">
+            <h1>JSF PrimeFaces + Spring 6 + Oracle</h1>
+
+            <p:panel header="User Form" style="width:400px; margin:20px auto;">
                 <h:panelGrid columns="2" cellpadding="5">
                     <h:outputLabel for="name" value="Name:" />
                     <p:inputText id="name" value="#{userBean.name}" placeholder="Enter your name" />
-                    
+
                     <h:outputLabel for="email" value="Email:" />
                     <p:inputText id="email" value="#{userBean.email}" placeholder="Enter your email" />
-                    
-                    <h:outputLabel for="message" value="Message:" />
-                    <p:inputTextarea id="message" value="#{userBean.message}" rows="4" cols="30" placeholder="Enter your message" />
                 </h:panelGrid>
-                
-                <div style="text-align: center; margin-top: 15px;">
-                    <p:commandButton value="Submit" action="#{userBean.submit}" update="result" icon="pi pi-check" />
-                    <p:commandButton value="Reset" action="#{userBean.reset}" immediate="true" icon="pi pi-times" style="margin-left: 10px;" />
+
+                <div style="text-align:center; margin-top:15px;">
+                    <p:commandButton value="Submit" action="#{userBean.submit()}" update="result" />
+                    <p:commandButton value="Reset" action="#{userBean.reset()}" immediate="true" style="margin-left:10px;" />
                 </div>
             </p:panel>
-            
-            <p:panel id="result" header="Result" rendered="#{userBean.submitted}" style="width:400px; margin: 20px auto; background-color: #f0f0f0;">
+
+            <p:panel id="result" header="Result" rendered="#{userBean.submitted}" style="width:400px; margin:20px auto;">
                 <h:panelGrid columns="2" cellpadding="5">
                     <h:outputLabel value="Name:" />
                     <h:outputText value="#{userBean.name}" />
-                    
+
                     <h:outputLabel value="Email:" />
                     <h:outputText value="#{userBean.email}" />
-                    
+
                     <h:outputLabel value="Message:" />
                     <h:outputText value="#{userBean.message}" />
                 </h:panelGrid>

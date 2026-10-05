@@ -9,19 +9,21 @@
     <version>1.0.0</version>
     <packaging>war</packaging>
 
-    <name>JSF PrimeFaces App with Spring 4</name>
-    <description>A JSF PrimeFaces application with Spring 4, Hibernate ORM and Oracle DB</description>
+    <name>JSF PrimeFaces App with Spring 6</name>
+    <description>JSF + PrimeFaces + Spring 6 + Hibernate 6 + Oracle DB</description>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.3.30.RELEASE</spring.version>
-        <hibernate.version>5.2.17.Final</hibernate.version>
+        <spring.version>6.1.6</spring.version>
+        <hibernate.version>6.4.10.Final</hibernate.version>
+        <jakarta.faces.version>4.0.2</jakarta.faces.version>
+        <primefaces.version>14.0.12</primefaces.version>
     </properties>
 
     <dependencies>
-        <!-- Jakarta Servlet API 6.0 (for Tomcat 11) -->
+        <!-- Jakarta Servlet API -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
@@ -29,7 +31,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Jakarta Faces (JSF 4.0) -->
+        <!-- Jakarta Faces -->
         <dependency>
             <groupId>jakarta.faces</groupId>
             <artifactId>jakarta.faces-api</artifactId>
@@ -39,41 +41,36 @@
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>jakarta.faces</artifactId>
-            <version>4.0.2</version>
+            <version>${jakarta.faces.version}</version>
         </dependency>
 
-        <!-- PrimeFaces 14.0.0 with explicit javax exclusion -->
+        <!-- PrimeFaces -->
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>14.0.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.servlet</groupId>
-                    <artifactId>javax.servlet-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>javax.faces</groupId>
-                    <artifactId>javax.faces-api</artifactId>
-                </exclusion>
-            </exclusions>
+            <version>${primefaces.version}</version>
         </dependency>
 
-        <!-- Jakarta CDI -->
+        <!-- CDI / JSR-330 -->
         <dependency>
             <groupId>jakarta.enterprise</groupId>
             <artifactId>jakarta.enterprise.cdi-api</artifactId>
             <version>4.0.1</version>
         </dependency>
 
-        <!-- Jakarta Annotation -->
+        <dependency>
+            <groupId>jakarta.inject</groupId>
+            <artifactId>jakarta.inject-api</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
             <version>2.1.1</version>
         </dependency>
 
-        <!-- Spring Framework 4.3.30 -->
+        <!-- Spring 6 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -94,6 +91,18 @@
 
         <dependency>
             <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
         </dependency>
@@ -104,20 +113,27 @@
             <version>${spring.version}</version>
         </dependency>
 
-        <!-- Hibernate ORM 5.2 -->
+        <!-- Jakarta Persistence -->
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <!-- Hibernate 6 -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-hikaricp</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
 
-        <!-- Oracle JDBC Driver -->
+        <!-- Oracle JDBC -->
         <dependency>
             <groupId>com.oracle.database.jdbc</groupId>
             <artifactId>ojdbc11</artifactId>
@@ -128,27 +144,20 @@
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-            <version>3.4.5</version>
-        </dependency>
-
-        <!-- Jakarta Persistence API -->
-        <dependency>
-            <groupId>jakarta.persistence</groupId>
-            <artifactId>jakarta.persistence-api</artifactId>
-            <version>3.0.0</version>
+            <version>5.1.0</version>
         </dependency>
 
         <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.36</version>
+            <version>2.0.13</version>
         </dependency>
 
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.11</version>
+            <version>1.5.6</version>
         </dependency>
     </dependencies>
 
@@ -164,7 +173,6 @@
                 </configuration>
             </plugin>
 
-            <!-- War Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
